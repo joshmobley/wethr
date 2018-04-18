@@ -1,0 +1,24 @@
+<div *ngIf="(location$ | async) as location" class="forecast">
+
+    <div *ngIf="(conditions$ | async) as conditions" [class]="'wrapper ' + (conditions.weather | lowercase)">
+
+      <h1>{{ location.city }}, {{ location.state }}</h1>
+
+      <div class="currently">
+        <h2>Currently</h2>
+        <table>
+          <tr> <td><img [src]="conditions.icon_url" /></td><td> {{ conditions.temp_f }}</td></tr>
+        </table>
+      </div>
+
+      <h2>10 Day Forecast</h2>
+
+      <app-ten-day [location]="location"></app-ten-day>
+
+      <h2>Hourly Forecast</h2>
+
+      <app-hourly [location]="location"></app-hourly>
+
+      <p class="attribution">Forecast data provided by <a href="https://weatherunderground.com" target="_blank"><img [src]="conditions.image.url" /></a></p>
+    </div>
+</div>

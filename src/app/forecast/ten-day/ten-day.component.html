@@ -1,0 +1,8 @@
+<table class="ten-day">
+  <tr *ngFor="let day of (forecast$ | async); let i = index;" class="day">
+    <td class="day-name">{{ day.date.weekday_short }}</td>
+    <td><img [src]="day.icon_url" /></td>
+    <td class="high">{{ day.high.fahrenheit }}</td>
+    <td class="low">{{ day.low.fahrenheit }}</td>
+  </tr>
+</table>

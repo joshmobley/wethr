@@ -1,0 +1,7 @@
+<table class="hourly">
+  <tr *ngFor="let hour of (forecast$ | async); let i = index;" class="hour">
+    <td class="hour-name">{{ hour.FCTTIME.civil }}</td>
+    <td><img [src]="hour.icon_url" /></td>
+    <td class="low">{{ hour.temp.english }}</td>
+  </tr>
+</table>
