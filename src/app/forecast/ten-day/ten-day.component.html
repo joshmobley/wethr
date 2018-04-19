@@ -1,4 +1,4 @@
-<table class="ten-day">
+<table class="ten-day" *ngIf="forecast$ | async as forecast; else loading">
   <tr *ngFor="let day of (forecast$ | async); let i = index;" class="day">
     <td class="day-name">{{ day.date.weekday_short }}</td>
     <td><img [src]="day.icon_url" /></td>
@@ -6,3 +6,10 @@
     <td class="low">{{ day.low.fahrenheit }}</td>
   </tr>
 </table>
+
+<ng-template #loading>
+  <div class="loading">
+    <h2>Getting 10-day...</h2>
+    <img src="assets/loader.gif">
+  </div>
+</ng-template>

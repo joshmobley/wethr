@@ -2,21 +2,59 @@
 .wrapper {
   min-height: 100vh;
   padding: 4em;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+  }
 }
 
 h1 { text-align: center; }
 
-.clear {
+.morning.clear::before {
+  background: linear-gradient(#9B89FF, #FFD789);
+}
+
+.morning.overcast::before {
+  background: linear-gradient(#CCCCCC, #FFD789);
+}
+
+.morning.partlycloudy::before {
+  background: linear-gradient(#DAD4FC, #FFD789);
+}
+
+.morning.mostlycloudy::before {
+  background: linear-gradient(#E7E7E7, #FFD789);
+}
+
+.day.clear::before {
   background: #8cdeff;
 }
-.overcast {
+.overcast.day::before {
   background: #e0e0e0;
 }
-.partlycloudy {
-  background: linear-gradient(#e0e0e0, #8cdeff 300px )
+.partlycloudy.day::before {
+  background: linear-gradient(#e0e0e0, #8cdeff 300px);
 }
-.rain {
-  background: linear-gradient(#a3a4a8, #c0c2c6 300px)
+.mostlycloudy.day::before {
+  background: linear-gradient(#e0e0e0, #D1F2FF 300px);
+}
+
+.rain.day::before, .rain.morning::before {
+  background: linear-gradient(#a3a4a8, #c0c2c6 300px);
+}
+
+.night {
+  color: #fff;
+
+  &::before{
+    background: #111;
+  }
 }
 
 .currently {
@@ -39,8 +77,6 @@ table {
   }
 }
 
-h1 { font-size: 3em; font-weight: 300; }
-h2 { font-size: 1em; margin-bottom: 1em; margin-top: 4em; text-transform: uppercase; letter-spacing: 2px; font-weight: 300; text-align: center; }
 td { font-size: 3em;
   vertical-align: middle; text-align: center; padding: .25em .125em;}
 

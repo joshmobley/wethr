@@ -1,6 +1,6 @@
-<div *ngIf="(location$ | async) as location" class="forecast">
+<div *ngIf="(location$ | async) as location; else loading" class="forecast">
 
-    <div *ngIf="(conditions$ | async) as conditions" [class]="'wrapper ' + (conditions.weather | lowercase)">
+    <div *ngIf="(conditions$ | async) as conditions" [class]="'wrapper ' + slugify(conditions.weather) + ' ' + getTime(conditions.local_time_rfc822)">
 
       <h1>{{ location.city }}, {{ location.state }}</h1>
 
@@ -22,3 +22,10 @@
       <p class="attribution">Forecast data provided by <a href="https://weatherunderground.com" target="_blank"><img [src]="conditions.image.url" /></a></p>
     </div>
 </div>
+
+<ng-template #loading>
+  <div class="loading">
+    <h2>Getting Location...</h2>
+    <img src="assets/loader.gif">
+  </div>
+</ng-template>

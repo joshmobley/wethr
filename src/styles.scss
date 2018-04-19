@@ -66,3 +66,19 @@ table {
     vertical-align: middle;
   }
 }
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 { font-size: 3em; font-weight: 300; }
+h2 { font-size: 1em; margin-bottom: 1em; margin-top: 4em; text-transform: uppercase; letter-spacing: 2px; font-weight: 300; text-align: center; }
