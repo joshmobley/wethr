@@ -7,6 +7,8 @@ export class ForecastService {
 
   url = 'http://api.wunderground.com/api/31bf61d50c387d23/';
 
+  randomString = Math.random().toString(36).substring(7);
+
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -23,7 +25,7 @@ export class ForecastService {
     )
   }
 
-  location$ = this.httpClient.get(this.url +  'geolookup/q/autoip.json').map(
+  location$ = this.httpClient.get(this.url +  'geolookup/q/autoip.json?' + this.randomString).map(
     res => res['location']
   );
 
